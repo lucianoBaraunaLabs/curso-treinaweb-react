@@ -54,23 +54,47 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	var minhaDiv = document.getElementById("app");
+	
+	// var React = require("react");
+	// import { render } from 'react-dom'
+	
 	var TextCounter = _react2.default.createClass({
 	    displayName: 'TextCounter',
 	
 	
 	    getInitialState: function getInitialState() {
+	        // objeto padr�o para definir um estado inicial ao inicializar o componente
 	        return { totalChars: 0 };
 	    },
 	
 	    handleChange: function handleChange(event) {
 	        var element = event.target;
 	        var text = element.value;
-	        this.setState({
-	            totalChars: text.length
-	        });
-	    }
+	        this.setState({ totalChars: text.length }); // Caso precise de algo no componentem que se atulize constante voc� precisa utilizar o objeto setState
+	    },
 	
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement('textarea', { onChange: this.handleChange }),
+	            _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'b',
+	                    null,
+	                    'Total:'
+	                ),
+	                ' ',
+	                this.state.totalChars
+	            )
+	        );
+	    }
 	});
+	
+	(0, _reactDom.render)(_react2.default.createElement(TextCounter, null), minhaDiv);
 
 /***/ },
 /* 1 */
